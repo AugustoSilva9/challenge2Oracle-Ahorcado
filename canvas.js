@@ -81,3 +81,12 @@ function escribirLetra(letra, posicion){
     pincel.fillStyle = "black";
     pincel.fillText(letra,  posicionLinea, lineasY -5)
 }
+
+function mostrarLetraError(letra, error){
+    let pos = 500 + 45 * error;
+    let err = ` ${letra} -`
+    pincel.beginPath();
+    pincel.font= "36px arial";
+    pincel.fillStyle = "black";
+    pincel.fillText(err, pos, 300, 40)
+}
