@@ -47,7 +47,14 @@ function dibujarAhorcado(error){
         dibujarRectas(300,550,350,600);
     }
     if(error == 7){
-        alert('perdiste')
+        mostrarResultado("Perdiste, vuelve a intentar!", "40px");
+        document.removeEventListener("keypress",letraUsuario);
+        document.getElementById('volverAJugar').classList.remove('oculto')
+    }
+    if(error == "ganaste"){
+        mostrarResultado("Ganaste!!!", "70px")
+        document.removeEventListener("keypress",letraUsuario);
+        document.getElementById('volverAJugar').classList.remove('oculto')
     }
     
 }
@@ -75,11 +82,13 @@ function lineasPalabra(palabra, lineasX, lineasY, largolinea){
 }
 
 function escribirLetra(letra, posicion){
+    console.log('escribirletra-----')
     let posicionLinea = (lineasX + (largolinea * posicion)) + 7;
     pincel.beginPath();
     pincel.font= "36px arial";
     pincel.fillStyle = "black";
     pincel.fillText(letra,  posicionLinea, lineasY -5)
+    console.log('escribirletra--')
 }
 
 function mostrarLetraError(letra, error){
@@ -89,4 +98,11 @@ function mostrarLetraError(letra, error){
     pincel.font= "36px arial";
     pincel.fillStyle = "black";
     pincel.fillText(err, pos, 300, 40)
+}
+
+function mostrarResultado(resultado, x){
+    pincel.beginPath();
+    pincel.font= `${x} verdana`;
+    pincel.fillStyle = "red";
+    pincel.fillText(resultado,  500, 400)
 }
