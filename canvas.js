@@ -1,11 +1,8 @@
 let pantalla = document.getElementById("ahorcado");
 let pincel = pantalla.getContext("2d");
 
-
 function dibujarAhorcado(error){
-    
     if(error == 0){
-        
         pincel.beginPath();
         pincel.fillStyle = "lightblue"
         pincel.fillRect(0,0,1200,800);
@@ -49,14 +46,13 @@ function dibujarAhorcado(error){
     if(error == 7){
         mostrarResultado("Perdiste, vuelve a intentar!", "40px");
         document.removeEventListener("keypress",letraUsuario);
-        document.getElementById('volverAJugar').classList.remove('oculto')
+        document.getElementById('volverAJugar').classList.remove('oculto');
     }
     if(error == "ganaste"){
-        mostrarResultado("Ganaste!!!", "70px")
+        mostrarResultado("Ganaste!!!", "70px");
         document.removeEventListener("keypress",letraUsuario);
-        document.getElementById('volverAJugar').classList.remove('oculto')
+        document.getElementById('volverAJugar').classList.remove('oculto');
     }
-    
 }
 
 function dibujarRectas(inicioX, inicioY, finX, finY){
@@ -76,33 +72,31 @@ function lineasPalabra(palabra, lineasX, lineasY, largolinea){
     for (let i = 0; i < palabra.length; i++) {
        let posicionX = lineasX + (largolinea*i);
        pincel.moveTo(posicionX,lineasY);
-       pincel.lineTo(posicionX + 40, lineasY)
+       pincel.lineTo(posicionX + 40, lineasY);
        pincel.stroke();
     }
 }
 
 function escribirLetra(letra, posicion){
-    console.log('escribirletra-----')
     let posicionLinea = (lineasX + (largolinea * posicion)) + 7;
     pincel.beginPath();
     pincel.font= "36px arial";
     pincel.fillStyle = "black";
-    pincel.fillText(letra,  posicionLinea, lineasY -5)
-    console.log('escribirletra--')
+    pincel.fillText(letra,  posicionLinea, lineasY -5);
 }
 
 function mostrarLetraError(letra, error){
     let pos = 500 + 45 * error;
-    let err = ` ${letra} -`
+    let err = ` ${letra} -`;
     pincel.beginPath();
     pincel.font= "36px arial";
     pincel.fillStyle = "black";
-    pincel.fillText(err, pos, 300, 40)
+    pincel.fillText(err, pos, 300, 40);
 }
 
 function mostrarResultado(resultado, x){
     pincel.beginPath();
     pincel.font= `${x} verdana`;
     pincel.fillStyle = "red";
-    pincel.fillText(resultado,  500, 400)
+    pincel.fillText(resultado,  500, 400);
 }
